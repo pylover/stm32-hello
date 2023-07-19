@@ -11,5 +11,7 @@
 int
 main(void) {
     printf("foo\n");
+    printf("foo\n");
+    printf("foo\n");
     while (1);
 }

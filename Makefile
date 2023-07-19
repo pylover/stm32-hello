@@ -26,8 +26,10 @@ CFLAGS = \
 SRCS = main.c
 BINSIZE = $(shell wc -c $(TARGET).bin | cut -d' ' -f1 | xargs)
 
-.PHONY: $(TARGET)
+.PHONY: all
+all: $(TARGET)
 
+.PHONY: $(TARGET)
 $(TARGET): $(TARGET).elf
 
 $(TARGET).elf: $(SRCS)
@@ -35,7 +37,7 @@ $(TARGET).elf: $(SRCS)
 	$(CP) -O binary $(TARGET).elf $(TARGET).bin
 
 clean:
-	rm -f *.o $(TARGET).elf $(TARGET).bin
+	rm -f *.o $(TARGET).elf $(TARGET).bin read.bin
 
 flash:
 	$(SF) --reset write $(TARGET).bin 0x8000000
